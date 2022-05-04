@@ -19,7 +19,10 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run: npm audit           
+      - run: npm audit
+      - run:
+          when: on_fail
+          command: npm audit fix     
 workflows:
   udacity-ci-workflow:
     jobs:
